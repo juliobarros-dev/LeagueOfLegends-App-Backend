@@ -16,7 +16,7 @@ const getWeeklyRotation = async () => {
   } catch (err) {
     throw new AppError({
       status: StatusCodes.NOT_FOUND,
-      message: 'Champions not found.'
+      message: 'Riot API token expired.'
     })
   }
 };
