@@ -5,5 +5,6 @@ const router = express.Router({ mergeParams: true })
 
 module.exports = {
   app,
+  express,
   router,
 }
