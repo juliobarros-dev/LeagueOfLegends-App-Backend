@@ -17,6 +17,7 @@
     "cors": "^2.8.5",
     "dotenv": "^10.0.0",
     "express": "^4.17.2",
+    "express-rescue": "^1.1.31",
     "http-status-codes": "^2.1.4",
     "mongodb": "^4.2.2",
     "pm2": "^5.1.2"

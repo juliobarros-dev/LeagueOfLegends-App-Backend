@@ -3,6 +3,7 @@ const axios = require('axios').default;
 const { StatusCodes } = require('http-status-codes');
 
 const { API_KEY, RIOT_API_URL } = process.env;
+const { AppError } = require('../../middlewares/appError')
 
 const FREE_WEEK_API_URL = `${ RIOT_API_URL }${ API_KEY }`;
 
@@ -13,10 +14,10 @@ const getWeeklyRotation = async () => {
     const { data } = await axios.get(FREE_WEEK_API_URL);
     return data
   } catch (err) {
-    console.log(err.message);
-    return {
-      err,
-    }
+    throw new AppError({
+      status: StatusCodes.NOT_FOUND,
+      message: 'Champions not found.'
+    })
   }
 };
 
@@ -56,15 +57,22 @@ const getNewPlayersChampions = async (idsArray) => {
 
 const getChampionsList = async () => {
   const { freeChampionIds, freeChampionIdsForNewPlayers } = await getWeeklyRotation();
+  
+  if (!freeChampionIds && !freeChampionIdsForNewPlayers) {
+    throw new AppError({
+      status: StatusCodes.NOT_FOUND,
+      message: 'Champions not found.'
+    });
+  }
+
   const freeWeek = await getFreeWeekChampions(freeChampionIds);
   const newPlayers = await getNewPlayersChampions(freeChampionIdsForNewPlayers);
 
   if (!freeWeek && !newPlayers) {
-    return {
-      err: true,
+    throw new AppError({
       status: StatusCodes.NOT_FOUND,
       message: 'Champions not found.'
-    };
+    });
   }
 
   return {
