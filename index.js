@@ -7,6 +7,6 @@ const PORT = process.env.PORT || 3001;
 
 app.use(json());
 
-app.get('/', championsRouter);
+app.use('/', championsRouter);
 
 app.listen(PORT, () => console.log(`Listen to PORT ${PORT}`))

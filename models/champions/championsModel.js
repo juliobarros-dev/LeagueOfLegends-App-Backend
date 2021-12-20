@@ -10,11 +10,18 @@ const findAllChampions = async () => {
   }
 };
 
-const findChampionsById = async (championKey) => {
+const findChampionById = async (championKey, language) => {
   try {
     const db = await connection();
-    const champions = await db.collection('champions_pt-br').findOne({ key: championKey });
-    return champions;
+    const champion = await db.collection(`champions_${language}`).findOne({ key: championKey }, {
+      projection: {
+        _id: false,
+        info: false,
+        stats: false,
+      },
+    });
+    console.log(champion);
+    return champion;
   } catch (err) {
     return err.message
   }
@@ -34,5 +41,5 @@ const insertChampions = async (championsArray, coll) => {
 module.exports = {
   findAllChampions,
   insertChampions,
-  findChampionsById,
+  findChampionById,
 };

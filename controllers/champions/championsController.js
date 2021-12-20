@@ -1,9 +1,9 @@
-const { findAllChampions } = require('../../models/champions/championsModel');
+const { getChampionsList } = require('../../service/champions/championsService');
 
 const championsList = async (_req, res) => {
-  const champions = await findAllChampions();
+  const champion = await getChampionsList();
 
-  return res.status(200).json(champions);
+  return res.status(200).json(champion);
 };
 
 module.exports = {
