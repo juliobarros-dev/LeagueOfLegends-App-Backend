@@ -6,9 +6,9 @@ Fornece as informações completas dos campeões que estão na rotação gratuit
 
 ## League of Legends
 
-League of Legends é um jogo do gênero M.O.B.A (Multiplayer Online Battle Arena) administrado pela Riot Games.
+League of Legends (LoL) é um jogo do gênero M.O.B.A (Multiplayer Online Battle Arena) administrado pela Riot Games.
 
-No LoL toda semana há campeões que ficam disponíveis gratuitamente que os jogadores possam experimentar os campeões antes de comprá-los.
+No LoL toda semana há campeões que ficam disponíveis gratuitamente para que os jogadores possam experimentá-los antes de fazer a compra.
 
 Essa lista de campeões é disponibilizada e atualizada pela própria Riot Games.
 
@@ -64,6 +64,7 @@ Retorno:
         "champions_en_us": [...]
       }
     }
+
 
 - [Teste em seu navegador](https://juliobarros-dev-lolapp.herokuapp.com/)
 
